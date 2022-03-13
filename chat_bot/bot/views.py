@@ -38,7 +38,7 @@ def parse_and_send_fb_message(fbid, recevied_message):
             headers={"Content-Type": "application/json"},
             data=response_msg)
         print(status.json())
-        return stats.json()
+        return status.json()
     return None
         
         
