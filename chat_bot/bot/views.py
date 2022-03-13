@@ -53,13 +53,16 @@ class FacebookWebhookView(View):
     hub.challenge
     Are all from facebook. We'll discuss soon.
     '''
+    # def get(self, request, *args, **kwargs):
+    #     hub_mode   = request.GET.get('hub.mode')
+    #     hub_token = request.GET.get('hub.verify_token')
+    #     hub_challenge = request.GET.get('hub.challenge')
+    #     if hub_token != VERIFY_TOKEN:
+    #         return HttpResponse('Error, invalid token', status_code=403)
+    #     return HttpResponse(hub_challenge)
+
     def get(self, request, *args, **kwargs):
-        hub_mode   = request.GET.get('hub.mode')
-        hub_token = request.GET.get('hub.verify_token')
-        hub_challenge = request.GET.get('hub.challenge')
-        if hub_token != VERIFY_TOKEN:
-            return HttpResponse('Error, invalid token', status_code=403)
-        return HttpResponse(hub_challenge)
+        return HttpResponse('Hello, World!')
             
 
     def post(self, request, *args, **kwargs):
