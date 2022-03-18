@@ -8,6 +8,9 @@ from django.utils.decorators import method_decorator
 
 from .logic import LOGIC_RESPONSES
 
+import random
+from django.apps import apps
+from . import word_utils
 
 VERIFY_TOKEN = "d7b54d1f820f595152c9e656913b06fbcb26572d703e7f4e76"  # generated above
 
