@@ -1,5 +1,6 @@
 # bot.views.py
 import json
+from unittest import result
 import requests, random, re
 from django.http import HttpResponse, JsonResponse
 from django.views.generic import View
@@ -25,12 +26,18 @@ PAGE_ACCESS_TOKEN = "EAAeGA2LZAObIBAGOnBgxUIbwWoLR4m43rhkmkF9U1bZAps1ZCnIHlYhpdm
 def parse_and_send_fb_message(fbid, recevied_message):
     # Remove all punctuations, lower case the text and split it based on space
     # tokens = re.sub(r"[^a-zA-Z0-9\s]", " ", recevied_message).lower().split()
-    tokens = recevied_message.lower().split()
+
+    classifier = apps.get_app_config('bot').classifier
+    responses = apps.get_app_config('bot').responses
+
+    tokens = recevied_message.lower()  #.split()
     msg = None
-    for token in tokens:
-        if token in LOGIC_RESPONSES:
-            msg = random.choice(LOGIC_RESPONSES[token])
-            break
+    feature = word_utils.get_features(tokens)
+    result = classifier.prob_classify(feature)
+    if result.prob(result.max()) < 0.5:
+        msg = random.choice(responses["unknow-message"])
+            
+    msg = random.choice(responses[result.max()])
 
     if msg is not None:
         endpoint = f"{FB_ENDPOINT}/me/messages?access_token={PAGE_ACCESS_TOKEN}"
