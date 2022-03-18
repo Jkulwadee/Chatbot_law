@@ -34,6 +34,10 @@ def parse_and_send_fb_message(fbid, recevied_message):
     msg = None
     feature = word_utils.get_features(tokens)
     result = classifier.prob_classify(feature)
+    print(
+        "------------------------------------------------------------------------------------------------"
+    )
+    print(result.prob(result.max()))
     if result.prob(result.max()) < 0.5:
         msg = random.choice(responses["unknow-message"])
 
