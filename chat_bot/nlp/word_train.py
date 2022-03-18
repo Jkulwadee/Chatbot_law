@@ -8,7 +8,7 @@ import sys
 
 sys.path.append(".")
 
-from chatbot.bot import word_utils
+from chat_bot.bot import word_utils
 
 
 def train(input, output):
@@ -42,4 +42,4 @@ def train(input, output):
 
 
 if __name__ == "__main__":
-    train("data/tain.xlsx", "data/my_classifier.pickle")    
+    train("data/tain_law.xlsx", "data/my_classifier.pickle")    
