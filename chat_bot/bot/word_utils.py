@@ -4,7 +4,7 @@ import deepcut
 
 def clean_words(words):
     stopwords = pythainlp.corpus.common.thai_stopwords()
-    not_delete = ["ไม่", "คือ", "ต้อง", "เก็บ", "เพื่อ", "คิด"]
+    not_delete = ["ไม่", "คือ", "ต้อง", "เก็บ", "เพื่อ", "คิด","ที่"]
     data = []
     for word in words:
         word = word.strip()
@@ -35,6 +35,9 @@ def get_features(data):
     features["ช่วง"] = "ช่วง" in words
     features["เวลา"] = "เวลา" in words
     features["ตอน"] = "ตอน" in words
+    features["ที่"] = "ที่" in words
+    features["สถานที่"] = "สถานที่" in words
+    features["ยื่น"] = "ยื่น" in words
 
     data = {"words": " ".join(words), "count": len(words)}
     data.update(features)
