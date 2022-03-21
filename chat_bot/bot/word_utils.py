@@ -4,10 +4,13 @@ import deepcut
 
 def clean_words(words):
     stopwords = pythainlp.corpus.common.thai_stopwords()
+    not_delete = ["ไม่", "คือ"]
     data = []
     for word in words:
         word = word.strip()
         if word not in stopwords:
+            data.append(word)
+        if word in not_delete:
             data.append(word)
     return data
 
