@@ -32,7 +32,13 @@ def get_features(data):
     features["เพื่อ"] = "เพื่อ" in words
     features["คำนวณ"] = "คำนวณ" or "คำนวน" in words
     features["คิด"] = "คิด" in words
+<<<<<<< HEAD
     
+=======
+    features["ช่วง"] = "ช่วง" in words
+    features["เวลา"] = "เวลา" in words
+    features["ตอน"] = "ตอน" in words
+>>>>>>> b6ad8f371be895a2e7b8e97fb32be7d05be91f58
 
 
     data = {"words": " ".join(words), "count": len(words)}
