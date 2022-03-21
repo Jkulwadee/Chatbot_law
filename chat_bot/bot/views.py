@@ -39,7 +39,11 @@ def parse_and_send_fb_message(fbid, recevied_message):
     )
     print(result.prob(result.max()))
     if result.prob(result.max()) < 0.5:
-        msg = random.choice(responses["unknow-message"])
+        #msg = random.choice(responses["unknow-message"])
+        msg = """ขออภัยค่ะระบบอัตโนมัติยังไม่เข้าใจ ท่านต้องการสอบถามข้อมูลด้านใดเกี่ยวกับภาษี สามารถถามคำถามดังต่อไปนี้ได้เลยค่ะ
+        1.กฎหมายภาษีคืออะไร
+        2.กฎหมายภาษีมีกี่ประเภท
+        3.สามารถยื่นเสียภาษีได้ที่ไหน"""
 
     msg = random.choice(responses[result.max()])
 
