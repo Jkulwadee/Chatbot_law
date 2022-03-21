@@ -24,8 +24,10 @@ def get_features(data):
     features["คือ"] = "คือ" in words  # or "กฎหมายภาษี"
     features["ประเภท"] = "ประเภท" in words
     features["สิทธิ"] = "สิทธิ" in words
-    features["ภาษีอากร"] = "ภาษีอากร" in words
+    features["อากร"] = "อากร" in words
     features["ไม่"] = "ไม่" or "โทษ" or "ไม่เสียภาษี" or "ไม่จ่ายภาษี" in words
+    features["หน่วย"] = "หน่วย" in words
+    features["งาน"] = "งาน" in words
 
     data = {"words": " ".join(words), "count": len(words)}
     data.update(features)
