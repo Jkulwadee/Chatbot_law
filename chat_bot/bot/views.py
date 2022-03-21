@@ -38,7 +38,7 @@ def parse_and_send_fb_message(fbid, recevied_message):
         "------------------------------------------------------------------------------------------------"
     )
     print(result.prob(result.max()))
-    if result.prob(result.max()) < 0.5:
+    if result.prob(result.max()) < 0.1:
         #msg = random.choice(responses["unknow-message"])
         msg = """ขออภัยค่ะระบบอัตโนมัติยังไม่เข้าใจ ท่านต้องการสอบถามข้อมูลด้านใดเกี่ยวกับภาษี สามารถถามคำถามดังต่อไปนี้ได้เลยค่ะ
         1.กฎหมายภาษีคืออะไร
