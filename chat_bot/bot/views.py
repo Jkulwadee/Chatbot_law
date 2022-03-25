@@ -20,7 +20,7 @@ FB_ENDPOINT & PAGE_ACCESS_TOKEN
 Come from the next step.
 """
 FB_ENDPOINT = "https://graph.facebook.com/v12.0/"
-PAGE_ACCESS_TOKEN = "EAAeGA2LZAObIBAGOnBgxUIbwWoLR4m43rhkmkF9U1bZAps1ZCnIHlYhpdm5CWPlmQWtZALj9CwoN3ngtmIfqABAk6vofu4O42ktgxct2LRpRkEZBrfq8BWcxh7co0WdaD8rrgZA4Q85BXZCBiv0MduR9rJGC4sriiE1qZAZBeLMUIh3jZBQffd4zxl"
+PAGE_ACCESS_TOKEN = "EAADqlDZBaQ8EBAK26nFfR5jycPEptdUfMoMNfvT3dM5KGaUnXb4fSrpkTxZBoG5zQRUqjySNDQUks4ZBtkKl5RaxTGWSCKnR9wfZAPteaa4r1RQaeY8oFbIMjiDthywfHdi9zr1ZCkwfl6r5O3oewJSa5Xjjw952XvTcAZBxDluL9VlXie46BV"
 
 
 def parse_and_send_fb_message(fbid, recevied_message):
