@@ -1,12 +1,13 @@
 # bot.views.py
 import json
 from unittest import result
+from wsgiref.validate import validator
 import requests, random, re
 from django.http import HttpResponse, JsonResponse
 from django.views.generic import View
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
-
+import validators
 from .logic import LOGIC_RESPONSES
 
 import random
@@ -43,7 +44,16 @@ def parse_and_send_fb_message(fbid, recevied_message):
     else:
         msg = random.choice(responses[result.max()])
 
-    if msg is not None:
+    if validators.url(msg) == True:
+        endpoint = f"{FB_ENDPOINT}/me/messages?access_token={PAGE_ACCESS_TOKEN}"
+        response_msg = json.dumps({"recipient": {"id": fbid}, "message":{"attachment":{"type":"image", "payload":{"url":msg, "is_reusable":True}}}})
+        status = requests.post(
+            endpoint, headers={"Content-Type": "application/json"}, data=response_msg
+        )
+        print(status.json())
+        return status.json()
+        
+    elif msg is not None:
         endpoint = f"{FB_ENDPOINT}/me/messages?access_token={PAGE_ACCESS_TOKEN}"
         response_msg = json.dumps({"recipient": {"id": fbid}, "message": {"text": msg}})
         status = requests.post(
@@ -52,6 +62,7 @@ def parse_and_send_fb_message(fbid, recevied_message):
         print(status.json())
         return status.json()
     return None
+
 
 
 class FacebookWebhookView(View):
