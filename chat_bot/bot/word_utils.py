@@ -43,6 +43,8 @@ def get_features(data):
     features["ไหร่"] = "ไหร่" in words
     features["กำหนด"] = "กำหนด" in words
     features["เสีย"] = "เสีย" in words
+    features["ไหน"] = "ไหน" in words
+    features["หวัด"] = "หวัด" in words
 
     data = {"words": " ".join(words), "count": len(words)}
     data.update(features)
