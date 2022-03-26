@@ -40,8 +40,8 @@ def parse_and_send_fb_message(fbid, recevied_message):
     print(result.prob(result.max()))
     if result.prob(result.max()) < 0.5:
         msg = random.choice(responses["unknow-message"])
-
-    msg = random.choice(responses[result.max()])
+    else:
+        msg = random.choice(responses[result.max()])
 
     if msg is not None:
         endpoint = f"{FB_ENDPOINT}/me/messages?access_token={PAGE_ACCESS_TOKEN}"
