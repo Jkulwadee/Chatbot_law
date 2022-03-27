@@ -27,6 +27,10 @@ def clean_words(words):
         "ไม",
         "ทำ",
         "จ่าย",
+        "แล้ว",
+        "ไป",
+        "จาก",
+        "การ",
     ]
     data = []
     for word in words:
@@ -90,9 +94,10 @@ def get_features(data):
     features["จ่าย"] = "จ่าย" in words
     features["ทำ"] = "ทำ" in words
     features["ไม"] = "ไม" in words
-    features["ทดสอบรูป"] = "ทดสอบรูป" in words
-    features["รูปภาพ"] = "รูปภาพ" in words
-    features["รูป"] = "รูป" in words
+    features["ไป"] = "ไป" in words
+    features["จาก"] = "จาก" in words
+    features["การ"] = "การ" in words
+    features["แล้ว"] = "แล้ว" in words
 
     data = {"words": " ".join(words), "count": len(words)}
     data.update(features)
