@@ -21,7 +21,7 @@ FB_ENDPOINT & PAGE_ACCESS_TOKEN
 Come from the next step.
 """
 FB_ENDPOINT = "https://graph.facebook.com/v12.0/"
-PAGE_ACCESS_TOKEN = "EAADqlDZBaQ8EBAK26nFfR5jycPEptdUfMoMNfvT3dM5KGaUnXb4fSrpkTxZBoG5zQRUqjySNDQUks4ZBtkKl5RaxTGWSCKnR9wfZAPteaa4r1RQaeY8oFbIMjiDthywfHdi9zr1ZCkwfl6r5O3oewJSa5Xjjw952XvTcAZBxDluL9VlXie46BV"
+PAGE_ACCESS_TOKEN = "EAAHEI5uBKTABAKnP1ZBSVdZCaaulUyk1y4tE1wgOZAZCLZBggRrZAjuZCtohvMemZC79rJN29Yb4F7pMvSzx2ZA41MllZA7itWITqsE9Fxf2m6MBPRN8KmSNZBO1dmiM0EarlwuwLPs3GIx46gS0W0TcMZB3UsY37qe8FNlxlUu0ZBKEeQXOnhSKzmtQB"
 
 
 def parse_and_send_fb_message(fbid, recevied_message):
@@ -39,20 +39,30 @@ def parse_and_send_fb_message(fbid, recevied_message):
         "------------------------------------------------------------------------------------------------"
     )
     print(result.prob(result.max()))
-    if result.prob(result.max()) < 0.5:
+    if result.prob(result.max()) < 0.7:
         msg = random.choice(responses["unknow-message"])
     else:
         msg = random.choice(responses[result.max()])
 
     if validators.url(msg) == True:
         endpoint = f"{FB_ENDPOINT}/me/messages?access_token={PAGE_ACCESS_TOKEN}"
-        response_msg = json.dumps({"recipient": {"id": fbid}, "message":{"attachment":{"type":"image", "payload":{"url":msg, "is_reusable":True}}}})
+        response_msg = json.dumps(
+            {
+                "recipient": {"id": fbid},
+                "message": {
+                    "attachment": {
+                        "type": "image",
+                        "payload": {"url": msg, "is_reusable": True},
+                    }
+                },
+            }
+        )
         status = requests.post(
             endpoint, headers={"Content-Type": "application/json"}, data=response_msg
         )
         print(status.json())
         return status.json()
-        
+
     elif msg is not None:
         endpoint = f"{FB_ENDPOINT}/me/messages?access_token={PAGE_ACCESS_TOKEN}"
         response_msg = json.dumps({"recipient": {"id": fbid}, "message": {"text": msg}})
@@ -62,7 +72,6 @@ def parse_and_send_fb_message(fbid, recevied_message):
         print(status.json())
         return status.json()
     return None
-
 
 
 class FacebookWebhookView(View):
