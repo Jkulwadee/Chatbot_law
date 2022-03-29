@@ -29,5 +29,6 @@ while True:
         print(random.choice(responses["unknow-message"]))
         continue
 
+
     print("prob ->", result.max(), round(result.prob(result.max()), 2))
     print("ans:", random.choice(responses[result.max()]))
