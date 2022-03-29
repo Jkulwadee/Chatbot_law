@@ -4,7 +4,38 @@ import deepcut
 
 def clean_words(words):
     stopwords = pythainlp.corpus.common.thai_stopwords()
+<<<<<<< HEAD
     add_keyword = ["ไม่", "คือ", "ต้อง", "เก็บ", "เพื่อ", "คิด", "ที่", "กำหนด", "ค่ะ", "คะ", "ไหน", "เพจ", "ทำ", "การ", "เปิด", "ตี", "ไร", 'ยัง', 'ไง','ตัว','ตะ','เอง','ค้าบ','ชื่อ','บอท','มั้ย']
+=======
+    add_keyword = [
+        "ไม่",
+        "คือ",
+        "ต้อง",
+        "เก็บ",
+        "เพื่อ",
+        "คิด",
+        "ที่",
+        "กำหนด",
+        "ค่ะ",
+        "คะ",
+        "ไหน",
+        "เพจ",
+        "ทำ",
+        "การ",
+        "เปิด",
+        "ตี",
+        "ไร",
+        "ยัง",
+        "ไง",
+        "ไม",
+        "ทำ",
+        "จ่าย",
+        "แล้ว",
+        "ไป",
+        "จาก",
+        "การ",
+    ]
+>>>>>>> d91283b555121c7e015797b2ba531fb000edd9ac
     data = []
     for word in words:
         word = word.strip()
@@ -55,6 +86,7 @@ def get_features(data):
     features["ขอบใจ"] = "ขอบใจ" in words
     features["ใจจ้า"] = "ใจจ้า" in words
     features["ใจนะ"] = "ใจนะ" in words
+<<<<<<< HEAD
     features["ตัว"] = "ตัว" in words
     features["ตะ"] = "ตะ" in words
     features["เอง"] = "เอง" in words
@@ -62,6 +94,24 @@ def get_features(data):
     features["ชื่อ"] = "ชื่อ" in words
     features["บอท"] = "บอท" in words
     features["มั้ย"] = "มั้ย" in words
+=======
+    features["Thanks"] = "Thanks" in words
+    features["Thank"] = "Thank" in words
+    features["thanks"] = "thanks" in words
+    features["thank"] = "thank" in words
+    features["you"] = "you" in words
+    features["hi"] = "hi" in words
+    features["hello"] = "hello" in words
+    features["Hi"] = "Hi" in words
+    features["Hello"] = "Hello" in words
+    features["จ่าย"] = "จ่าย" in words
+    features["ทำ"] = "ทำ" in words
+    features["ไม"] = "ไม" in words
+    features["ไป"] = "ไป" in words
+    features["จาก"] = "จาก" in words
+    features["การ"] = "การ" in words
+    features["แล้ว"] = "แล้ว" in words
+>>>>>>> d91283b555121c7e015797b2ba531fb000edd9ac
 
     data = {"words": " ".join(words), "count": len(words)}
     data.update(features)
